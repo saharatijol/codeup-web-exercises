@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register With Us </title>
+</head>
+<body>
+    <form method="POST" action="https://request-inspector.glitch.me/">
+        <label for="email" >Email:</label>
+        <input type="text" name="email" id="email" placeholder="Ex. name@email.com" > <br>
+
+        <label for="password" >Password:</label>
+        <input type="password" name="password" id="password" placeholder="Password"> <br>
+
+        <label for="bio">Bio:</label> <br>
+        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Type your bio here..."></textarea> <br>
+
+        <label>How did you hear about us? </label> <br>
+            <input type="radio" name="q1" value="billboard">Billboard <br>  <!-- If name have different attributes, this will allow you to select multiple options using type="radio" -->
+            <input type="radio" name="q1" value="radio">Radio Ad <br>       <!--If using radio type, name attributes should be the same -->
+            <input type="radio" name="q1" value="internet">Internet Ad <br>
+            <input type="radio" name="q1" value="other">Other <br>
+
+
+        <label for="browser">Which browser are you using?</label> <br>
+        <select name="browser" id="browser">
+            <option value="chrome">Chrome</option>
+            <option value="firefox">Firefox</option>
+            <option value="safari">Safari</option>
+            <option value="bing">Bing</option>
+            <option value="ie">Internet Explorer</option>
+        </select> <br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
