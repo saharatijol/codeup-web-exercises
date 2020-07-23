@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset=""UTF-8>
+        <title>HTML Forms</title>
+    </head>
+    <body>
+        <h1>HTML Forms</h1>
+<!--        <form method="POST" action="https://request-inspector.glitch.me">-->
+
+<!--            <label for="username">Username</label>-->
+<!--            <input id="username" name="username" type="text">-->
+<!--            <br>-->
+
+<!--            <label for="password">Password</label>-->
+<!--            <input id="password" name="password" type="text">-->
+<!--            <br>-->
+
+<!--            <label for="favorite">Favorite number</label>-->
+<!--            <input id="favorite" name="favorite" type="text">-->
+<!--            <br>-->
+
+<!--            <input type="submit">-->
+
+<!--        </form>-->
+
+        <form method="GET" action="https://request-inspector.glitch.me">
+            <label for="zipcode">Zipcode</label>
+            <input type="number" name="zipcode" id="zipcode" placeholder="Zipcode here">
+
+            <label for="street">Street</label>
+            <input type="street" name="street" id="street" placeholder="San Antonio">
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password"><br>
+
+            <label for="message">Message:</label><br>
+            <textarea name="message" id="message" placeholder="Write your message here..."></textarea><br>
+
+
+            <label for="coffee">What kind of coffee do you like?</label>
+            <select name="coffee" id="coffee">
+                <option value="espresso">Espresso</option>
+                <option value="coldbrew">Cold Brew</option>
+                <option value="latte">Latte</option>
+            </select><br>
+
+            <label>What goes on your pizza? <br>
+                <input type="checkbox" name="pepperoni" id="pepperoni">Pepperoni <br>
+                <input type="checkbox" name="sausage" id="sausage">Sausage <br>
+                <input type="checkbox" name="pineapple" id="pineapple">Pineapple <br>
+                <input type="checkbox" name="olives" id="olives">Olives <br>
+                <input type="checkbox" name="ham" id="ham">Ham <br>
+                <label for="other">Other:</label>
+                <input type="text" name="other" id="other"> <br>
+            </label>
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
