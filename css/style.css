@@ -1,4 +1,39 @@
-.fancy-header {
-    color: purple; /* single line comment */
+body {
+    /*background-image: url(https://images.pexels.com/photos/315938/pexels-photo-315938.jpeg);*/
+    background-size: cover;
+    background-color: #dae1e7;
+}
+
+#top {
+    text-align: center;
+}
+
+h1, h2 {
+    color: #00909e; /* single line comment */
     text-decoration: underline;
 }
+
+ul {
+    list-style: circle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+main {
+    background-color: #dae1e7;
+}
+ */
