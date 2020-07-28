@@ -27,21 +27,22 @@ a {
 }
 
 .container {
-    margin-top: 1.5em;
+    margin-top: 2em;
 }
 
 .top-nav {
     background: var(--light-bg);
     width: 100%;
     position: fixed;
+    z-index: 1000;
 }
 
 .media {
-    /*width: 100%; */
+    width: 100%;
     background-color: var(--light-bg);
     border: 1px solid var(--separator-color);
     padding: 0.5em;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .media-image {
@@ -108,8 +109,8 @@ a {
 
 .profile-image {
     position: absolute;
-    top: 14.25em;
-    z-index: 1000;
+    top: 15.25em;
+
 }
 .profile-items {
     padding: 0;
