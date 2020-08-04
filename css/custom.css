@@ -1,0 +1,21 @@
+.sign-up-i {
+    width: 20px;
+}
+
+.jumbotron {
+    background-image: url(https://java.codeup.com/examples/bootstrap/pizza.png);
+    background-size: cover;
+    height: 100%;
+}
+
+h1 {
+    position: relative;
+    background-color: ghostwhite;
+    opacity: 65%;
+    width: 100%;
+}
+
+.btn-group {
+    width: 25%;
+    margin-left: auto;
+}
