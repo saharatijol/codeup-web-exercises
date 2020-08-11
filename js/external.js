@@ -38,14 +38,23 @@ var weekPay = alert("Wow! You've made $" + ((googleRate*hoursWorkedGoogle)+(amaz
 
 // A student can be enrolled in a class only if the class is not full and the class schedule
 // does not conflict with her current schedule.
-
+var classSpots = 25;
+var registeredStudents = 15;
+var classConflict = true;
+var canEnroll = ((classSpots > registeredStudents) && !classConflict);
+alert("Student able to register: " + canEnroll);
 
 
 // A product offer can be applied only if a person buys more than 2 items, and the offer has not expired.
 //     Premium members do not need to buy a specific amount of products.
 var offerValid = true;
+var isPremium = true;
+isPremium = confirm("Are you a premium member?");
+var isOfferExpired = false;
+isOfferExpired = confirm("Is the offering expired?");
 var items = prompt("How many items would you like to purchase?");
-var doOffer = (items > 2) && offerValid;
+var doOffer = (items > 2 || isPremium) && !offerValid;
+console.log("You are qualified for an offer: " + doOffer);
 
 
 
