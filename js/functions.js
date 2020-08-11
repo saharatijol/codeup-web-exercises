@@ -8,11 +8,12 @@
  * Example
  * > sayHello("codeup") // returns "Hello, codeup!"
  */
+sayHello("codeup");
 function sayHello(name) {
     return ("Hello, " + name);
 }
 
-// sayHello("codeup");
+
 
 /**
  * TODO:
@@ -22,6 +23,7 @@ function sayHello(name) {
  * console.log 'helloMessage' to check your work
  */
 var helloMessage = sayHello("Sahara");
+console.log(helloMessage);
 
 /**
  * TODO:
@@ -53,12 +55,14 @@ var random = Math.floor((Math.random() * 3) + 1);
  * different result everytime you refresh the page if you are using the random
  * number)
  */
-function isTwo(number) {
-    var number === 2;
-    return true;
+function isTwo(num1) {
+    var x = Boolean(num1===2);
+    return x;
 }
 
-isTwo(random);
+var returnValue = isTwo(random);
+console.log(returnValue);
+
 
 /**
  * TODO:
@@ -71,6 +75,13 @@ isTwo(random);
  * > calculateTip(0.25, 25.50) // returns 6.375
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
+// var calculateTip = function(tipPercentage, totalBill) {
+//     var yourTip = (tipPercentage*totalBill);
+//     return yourTip;
+// }
+//
+// var returnValue = calculateTip(inputTip, inputBill);
+// console.log("Your tip came out to be: $" + returnValue);
 
 /**
  * TODO:
@@ -78,6 +89,17 @@ isTwo(random);
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
+var inputBill = prompt("How much is your total bill? $");
+var inputTip = prompt("Thanks! Now, how much would you like to tip (in percentage)?");
+
+var calculateTip = function(tipPercentage, totalBill) {
+    var yourTip = (tipPercentage*totalBill);
+    return yourTip;
+}
+
+var returnValue = calculateTip(inputTip, inputBill);
+// console.log("Your tip came out to be: $" + returnValue);
+alert("Excellent! Tip charge will be: $" + returnValue);
 
 /**
  * TODO:
@@ -93,3 +115,13 @@ isTwo(random);
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+
+function applyDiscount(originalPrice, discountPercent) {
+    var calcDiscount =  (originalPrice*discountPercent);
+    var newPrice = (originalPrice-calcDiscount);
+    return newPrice;
+}
+
+var returnResult = applyDiscount(45.99, 0.12);
+console.log("New price for your item is: $" + returnResult);
