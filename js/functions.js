@@ -93,7 +93,7 @@ var inputBill = prompt("How much is your total bill? $");
 var inputTip = prompt("Thanks! Now, how much would you like to tip (in percentage)?");
 
 var calculateTip = function(tipPercentage, totalBill) {
-    var yourTip = (tipPercentage*totalBill);
+    var yourTip = (tipPercentage * totalBill);
     return yourTip;
 }
 
