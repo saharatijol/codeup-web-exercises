@@ -26,7 +26,7 @@ function analyzeColor(color) {
     } else if (color == 'red') {
         return("Strawberries are red");
     } else if (color == 'cyan') {
-        return("I don't know anything about cyan");
+        return("It took a thousand years for Goku to be super cyan.");
     }
 }
 
@@ -103,7 +103,7 @@ console.log(colorPicker2 (randomColor2));
  * function to show it to the user.
  */
 var color = prompt("Hey! Pick 1 of 3 of these colors: blue, red, cyan");
-alert("Here is the message it generated!: " + analyzeColor(color))
+alert("Message: " + analyzeColor(color))
 /* ########################################################################## */
 
 /**
@@ -125,6 +125,28 @@ alert("Here is the message it generated!: " + analyzeColor(color))
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
+function calculateTotal (luckyNumber, totalAmt) {
+    switch(luckyNumber) {
+        case 0:
+            return(totalAmt);
+            break;
+        case 1:
+            return(totalAmt * 0.10);
+            break;
+        case 2:
+            return(totalAmt * 0.25);
+            break;
+        case 3:
+            return(totalAmt * 0.35);
+            break;
+        case 4:
+            return(totalAmt * 0.50);
+            break;
+        case 5:
+            return(totalAmt - totalAmt);
+            break;
+    }
+}
 
 /**
  * TODO:
@@ -133,8 +155,16 @@ alert("Here is the message it generated!: " + analyzeColor(color))
  * and alerts to display to the user what their lucky number was, what their
  * price before the discount was, and what their price after the discount is.
  */
-// Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+//Generate a random number between 0 and 6
+var luckyNumber = Math.floor(Math.random() * 6);
+
+var totalAmt = prompt("What's your total bill?: $");
+alert("Generating your lucky number discount...");
+calculateTotal (luckyNumber, totalAmt);
+alert("Your lucky number is: #" + luckyNumber +
+    "\n Your total bill was: $" + totalAmt +
+    "\n Your new total after discount: $" + (totalAmt - calculateTotal(luckyNumber, totalAmt)));
+
 
 /**
  * TODO:
