@@ -25,8 +25,8 @@ function analyzeColor(color) {
         return("blue is the color of the sky");
     } else if (color == 'red') {
         return("Strawberries are red");
-    } else if (color == 'cyan') {
-        return("It took a thousand years for Goku to be super cyan.");
+    } else {
+        return("I don't know anything about that " + color);
     }
 }
 
@@ -73,25 +73,20 @@ function colorPicker2 (randomColor2) {
     switch(randomColor2) {
         case 'red':
             return("Red is my favorite color.");
-            break;
         case 'orange':
             return("Orange is rich in Vitamin C!.");
-            break;
         case 'yellow':
             return("Yellow is a happy color.");
-            break;
         case 'green':
             return("Green vegetable are good for you.");
-            break;
         case 'blue':
             return("Blue reminds me of the ocean.");
-            break;
         case 'indigo':
             return("Indigo jeans is my favorite denim wash.");
-            break;
         case 'violet':
             return("Violet is my grandma's favorite color.");
-            break;
+        default:
+            return("What? Is that a color?");
     }
 }
 
@@ -129,22 +124,19 @@ function calculateTotal (luckyNumber, totalAmt) {
     switch(luckyNumber) {
         case 0:
             return(totalAmt);
-            break;
         case 1:
-            return(totalAmt * 0.10);
-            break;
+            return totalAmt - (totalAmt * 0.10);
         case 2:
-            return(totalAmt * 0.25);
-            break;
+            return totalAmt - (totalAmt * 0.25);
         case 3:
-            return(totalAmt * 0.35);
-            break;
+            return totalAmt - (totalAmt * 0.35);
         case 4:
-            return(totalAmt * 0.50);
-            break;
+            return totalAmt - (totalAmt * 0.50);
         case 5:
             return(totalAmt - totalAmt);
-            break;
+        // default:
+        //     return("Where's the money??");
+
     }
 }
 
@@ -157,13 +149,13 @@ function calculateTotal (luckyNumber, totalAmt) {
  */
 //Generate a random number between 0 and 6
 var luckyNumber = Math.floor(Math.random() * 6);
-
 var totalAmt = prompt("What's your total bill?: $");
+
 alert("Generating your lucky number discount...");
 calculateTotal (luckyNumber, totalAmt);
 alert("Your lucky number is: #" + luckyNumber +
-    "\n Your total bill was: $" + totalAmt +
-    "\n Your new total after discount: $" + (totalAmt - calculateTotal(luckyNumber, totalAmt)));
+    "\nYour total bill was: $" + totalAmt +
+    "\nYour new total after discount: $" + (calculateTotal(luckyNumber, totalAmt)));
 
 
 /**
@@ -182,3 +174,44 @@ alert("Your lucky number is: #" + luckyNumber +
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+var welcomeMessage = confirm("Welcome! Would you like to enter a Number? Click OK if, Yes");
+if (welcomeMessage) {
+    var numEntered = prompt("Great! Please enter your number: ");
+    if (isNum(numEntered) == !true) {
+        evenOdd(numEntered);
+        oneHunnit(numEntered);
+        positiveNegative(numEntered);
+    }
+    else {
+        alert(numEntered + " is not a number. Please try again later.. Goodbye!");
+    }
+}
+else {
+    alert("Alright! Maybe next time then!");
+}
+
+function isNum(numEntered) {
+    return isNaN(numEntered);
+}
+
+function evenOdd(numEntered) {
+    if(numEntered % 2 === 0) {
+        alert("#" + numEntered + " is an EVEN number")
+    }
+    else {
+        alert("#" + numEntered + " is an ODD number")
+    }
+}
+
+function oneHunnit(numEntered) {
+    alert ("Your number " + Number(numEntered) + " + 100 = " + (Number(numEntered) + 100));
+}
+
+function positiveNegative(numEntered) {
+    if (numEntered > 0) {
+        alert("Hey your number " + numEntered + " is a POSITIVE number. Yay!")
+    }
+    else {
+        alert("Hey your number " + numEntered + " is a NEGATIVE number. Womp womp")
+    }
+}
