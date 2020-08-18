@@ -27,11 +27,11 @@ describe("returnMultiplicationTable", function() {
 // Random Number Even/Odd Messages Tests
 describe("returnEvenOddMessage", function() {
     it("should be defined", function() {
-        // TODO: add an assertion to verify that the function is defined
+        expect(returnEvenOddMessage).toBeDefined()
 
     });
     it("should return a string when passed an integer", function() {
-        // TODO: add an assertion verifying that the function returns a string when passed an integer
+        expect(typeof returnEvenOddMessage()).toEqual("string");
 
     });
     it("should return the correct message when passed an integer", function() {
