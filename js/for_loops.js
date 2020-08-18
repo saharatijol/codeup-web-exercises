@@ -33,6 +33,7 @@ function returnTenEvenOddMessages() { //how to return and get it to pass tests?
        }
    }
 }
+console.log(returnTenEvenOddMessages())
 
 function returnNumberSail(stringNum) { // what happened?
     for (let i = 1; i < 10; i++) {
