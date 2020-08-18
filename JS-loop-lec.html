@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Loop Example</title>
+</head>
+<body>
+<h1>JS Loop Lesson lives here</h1>
+<script>
+    'use strict';
+    // var i = 0;
+    //
+    // while (i < 10) {
+    //     console.log('while loop iteration #' + i);
+    //     i++;
+    // }
+
+    // var i = 50;
+    // do {
+    //     console.log('do-while loop iteration #' + i);
+    //     i--;
+    // } while (i >= 40);
+
+    // for (var i = 3; i <= 30; i+=3) {
+    //     console.log('for loop iteration #' + i);
+    // }
+
+    //
+
+    // for (var i = 0, j = 9; i < 10; i++, j--) {
+    //     console.log('for loop iteration #' + i + ', j = ' + j);
+    // }
+
+    //
+
+    // var i = 1;
+    // while(i <= 10) {
+    //
+    //     console.log('while loop iteration #' + i);
+    //     i++;
+    //
+    //     if (i === 4) {
+    //         console.log("I break here when it reached 4th iteration");
+    //         break;
+    //     }
+    // }
+
+
+    // for (var i = 1; i < 100; i++) {
+    //
+    //     if (i % 2 !== 0) {
+    //         // number isn't even
+    //         // odd numbers aren't as cool
+    //         // skip the rest of the loop and continue with the next iteration
+    //         continue;
+    //     }
+    //
+    //     console.log('Here is a lovely even number: ' + i);
+    // }
+
+    for (var i = 1; i < 100; i++) {
+        if (i % 3 !== 0) {
+            continue;
+        }
+        console.log('Here is a lovely even number: ' + i);
+    }
+</script>
+</body>
+</html>
