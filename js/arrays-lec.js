@@ -28,7 +28,7 @@ var students = [
     'Sedgwick House',
 ];
 
-//console.log(students);
+console.log(students);
 
 //How to list all the items in the array//
 
