@@ -64,11 +64,20 @@
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
 
-    function first ([]){};
+    var first = function(arr){
+        return arr[0];
+    }
 
-    function second ([]){};
+    var second = function(arr){
+        return arr[1];
+    }
 
-    function third ([]){};
+    var third = function(arr){
+        return arr[arr.length - 1];
+    }
 
+    console.log(first([1, 2, 3, 4, 5]))
+    console.log(second([1, 2, 3, 4, 5]))
+    console.log(third([1, 2, 3, 4, 5]))
 
 })();
