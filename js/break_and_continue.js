@@ -1,3 +1,6 @@
+
+//////////// Break and Continue ////////////
+
 var numEntered = prompt("Enter an odd number between 1 - 50: ");
 
 while (isNaN(numEntered) || (numEntered%2 === 0)){

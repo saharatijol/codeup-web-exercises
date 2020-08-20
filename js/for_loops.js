@@ -1,5 +1,6 @@
 'use strict';
 
+/////// returnMultiplicationTable Function ////////
 function returnMultiplicationTable(input) { //i don't understand. Help
     let output = ''
     for (let i = 1; i < 11; i++) {
@@ -13,6 +14,7 @@ function returnMultiplicationTable(input) { //i don't understand. Help
 // (returnMultiplicationTable(7)
 // console.log(returnMultiplicationTable(7))
 
+//////// returnEvenOddMessage Function //////
 function returnEvenOddMessage(num) {
     if (num % 2 === 0) {
         return String(num) + " is even";
@@ -22,6 +24,8 @@ function returnEvenOddMessage(num) {
     }
 }
 
+
+///////// returnEvenOddMessages Function/////////
 function returnTenEvenOddMessages() { //how to return and get it to pass tests?
     for(let i = 1; i < 11 ; i++) {
        var randomNum = Math.floor(Math.random() * 180) + 20;
@@ -35,6 +39,8 @@ function returnTenEvenOddMessages() { //how to return and get it to pass tests?
 }
 console.log(returnTenEvenOddMessages())
 
+
+/////////// returnNumberSail Function //////////
 function returnNumberSail(stringNum) { // what happened?
     for (let i = 1; i < 10; i++) {
         console.log(("" + i).repeat(i));
@@ -43,6 +49,7 @@ function returnNumberSail(stringNum) { // what happened?
 console.log(returnNumberSail);
 
 
+////////// returnCountDownFrom100InFives Function ////////
 function returnCountDownFrom100InFives() { // how to return instead of console.log
     for(let i = 100; i > 4 ; i-=5) {
         console.log(i);
