@@ -133,7 +133,6 @@
     // console.log(books[3].author.firstName)
     // console.log(books[3].author.lastName)
 
-
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -159,10 +158,10 @@
      *      ...
      */
     books.forEach(function(bookList, i){
-        let combinedNames = bookList.author.firstName + " " + bookList.author.lastName
+        let fullNames = bookList.author.firstName + " " + bookList.author.lastName
         console.log(`Book # ${(i) + 1}`)
         console.log(`Title: ${bookList.title}`)
-        console.log(`Author: ${combinedNames}`)
+        console.log(`Author: ${fullNames}`)
         console.log(`----`)
     });
     /**
@@ -177,12 +176,21 @@
      */
 
 
-    function createBook (title, author) {
-        let newBook = {};
-        newBook.title =
-
+    function createBook (inputTitle, inputAuthor) {
+        let newBook = {title: inputTitle, author: inputAuthor};
+        books.push(newBook);
+        console.log(newBook);
+        console.log(books);
     }
 
+    createBook ('The Lost one', 'Sahara')
 
+    function showBookInfo({}) {
+        books.forEach(function(bookInfo) {
+            if(showBookInfo === )
+            console.log(`Title: ${bookInfo.title}`)
+        });
+    }
+    showBookInfo('This Never Happened');
 
 })();
