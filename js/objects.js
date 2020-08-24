@@ -62,18 +62,17 @@
             amount: 320}
     ];
 
-    shoppers.forEach(function(shopInd, i) {
+    shoppers.forEach(function(shopperInd, i) {
         // console.log(`Shopper Name: ${shopInd.name}`)
         // console.log(`Amount Spent: ${shopInd.amount}`)
-        if (shopInd.amount > 200) {
-            let discountOff = shopInd.amount * 0.12;
-            let discountApplied = shopInd.amount - discountOff;
+        if (shopperInd.amount > 200) {
+            let discountOff = shopperInd.amount * 0.12;
+            let discountApplied = shopperInd.amount - discountOff;
             console.log(
-                `Shopper #${(i) + 1} ${shopInd.name}, has a total of $${shopInd.amount}. Qualified for a discount of $${discountOff}. New total is $${discountApplied}`);
+                `Shopper #${(i) + 1} ${shopperInd.name}, has a total of $${shopperInd.amount}. Qualified for a discount of $${discountOff}. New total is $${discountApplied}`);
         }
         else {
-            console.log(`Shopper #${(i) + 1} ${shopInd.name}, has a total of $${shopInd.amount}. Not qualified for discount.`);
-
+            console.log(`Shopper #${(i) + 1} ${shopperInd.name}, has a total of $${shopperInd.amount}. Not qualified for discount.`);
         }
     });
 
@@ -159,7 +158,7 @@
      */
     books.forEach(function(bookList, i){
         let fullNames = bookList.author.firstName + " " + bookList.author.lastName
-        console.log(`Book # ${(i) + 1}`)
+        console.log(`Book # ${(i + 1)}`)
         console.log(`Title: ${bookList.title}`)
         console.log(`Author: ${fullNames}`)
         console.log(`----`)
@@ -179,18 +178,17 @@
     function createBook (inputTitle, inputAuthor) {
         let newBook = {title: inputTitle, author: inputAuthor};
         books.push(newBook);
-        console.log(newBook);
-        console.log(books);
+        // console.log(newBook);
+        return books;
     }
+
+    console.log(books)
 
     createBook ('The Lost one', 'Sahara')
 
-    function showBookInfo({}) {
-        books.forEach(function(bookInfo) {
-            if(showBookInfo === )
-            console.log(`Title: ${bookInfo.title}`)
-        });
-    }
-    showBookInfo('This Never Happened');
+    // function showBookInfo() {
+    //
+    // }
+    // showBookInfo('This Never Happened');
 
 })();
