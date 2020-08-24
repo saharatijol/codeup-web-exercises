@@ -26,7 +26,7 @@
     var breakPlanets = planetsArray.join("<br>")
     console.log(breakPlanets);
 
-
+    //BONUS: Solution covered in class
 
 
 
