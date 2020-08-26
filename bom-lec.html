@@ -1,14 +1,175 @@
-<h1>This is a demo page</h1>
-<button type="button" onClick="reloadFromCache()">Refresh!</button>
-<button type="button" onClick="reloadFromServer()">Refresh!</button>
-<h2>Hi</h2>
-<script>
-    function reloadFromCache() {
-        location.reload(); // reload page, possibly from cache
-        alert("from cache, possibly")
-    }
-    function reloadFromServer() {
-        location.reload(true); // reload page from server
-        alert("from server")
-    }
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+</head>
+<body>
+<!--<h1 id="demo"></h1>-->
+<!--<script>-->
+<!--    "use strict";-->
+<!--    (function() {-->
+<!--        var paragraph = document.getElementById('demo');-->
+<!--        paragraph.innerHTML = 'IO ROCKS!!';-->
+<!--    })();-->
+<!--</script>-->
+
+
+<!--<p class="a"></p>-->
+<!--<p class="a"></p>-->
+<!--<p class="b"></p>-->
+<!--<p class="b"></p>-->
+<!--<script>-->
+<!--    "use strict";-->
+<!--    (function() {-->
+<!--        var bClass = document.getElementsByClassName('b');-->
+
+<!--        var output = ''-->
+<!--        for (var i = 0; i < bClass.length; i++) {-->
+<!--            output += bClass[i].outerHTML + '\n'-->
+<!--        }-->
+<!--        alert(output);-->
+<!--    })();-->
+<!--</script>-->
+
+<!--<h1>List One</h1>-->
+<!--<ul>-->
+<!--    <li class="odd list-one-item">List 1, Item 1</li>-->
+<!--    <li class="even list-one-item">List 1, Item 2</li>-->
+<!--</ul>-->
+<!--<h1>List Two</h1>-->
+<!--<ul>-->
+<!--    <li class="odd list-two-item">List 2, Item 1</li>-->
+<!--    <li class="even list-two-item">List 2, Item 2</li>-->
+<!--</ul>-->
+<!--<h1 id="out"></h1>-->
+
+<!--<script>-->
+<!--    "use strict";-->
+<!--    (function() {-->
+
+<!--        var listItems = document.getElementsByTagName('li');-->
+
+<!--        // Print all elements-->
+<!--        var output = ''-->
+<!--        for (var i = 0; i < listItems.length; i++) {-->
+<!--            console.log(listItems[i].innerHTML + '<br>');-->
+<!--        }-->
+
+<!--    })();-->
+<!--</script>-->
+
+<!--<form name="login">-->
+<!--    <div>-->
+<!--        <label for="username">Username</label>-->
+<!--        <input id="username" name="username" type="text">-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="password">Password</label>-->
+<!--        <input id="password" name="password" type="password">-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <input type="submit">-->
+<!--    </div>-->
+<!--</form>-->
+<!--<h1 id="out">user</h1>-->
+<!--<button onclick="saveUsername()">Save Username</button>-->
+
+<!--<script>-->
+<!--    "use strict";-->
+<!--    let hout = document.getElementById('out');-->
+<!--    (function() {-->
+<!--        // get the "username" input-->
+<!--        var usernameInput = document.forms.login.username;-->
+
+<!--        // log the value of the "username" input-->
+<!--        // console.log(usernameInput.value);-->
+<!--        hout.innerText = usernameInput.value;-->
+<!--    })();-->
+
+<!--    function saveUsername() {-->
+<!--        var usernameInput = document.forms.login.username;-->
+<!--        hout.innerText = usernameInput.value-->
+<!--    }-->
+<!--</script>-->
+
+<!--<h1 id="main-heading">Hello World!</h1>-->
+<!--<div id="main-section">-->
+<!--    <p>Paragraph 1</p>-->
+<!--    <p>Paragraph 2</p>-->
+<!--</div>-->
+<!--<script>-->
+<!--    "use strict";-->
+<!--    (function() {-->
+<!--        // Get the main heading h1 by id-->
+<!--        var mainHeading = document.getElementById('main-heading');-->
+
+<!--        console.log(mainHeading.innerHTML); // Prints Hello World!-->
+
+<!--        // Assign a new value to the inner HTML of the main heading-->
+<!--        mainHeading.innerHTML = "Hello Codeup!";-->
+
+<!--        console.log(mainHeading.innerHTML); // Prints Hello Codeup!-->
+
+<!--        // Get the main section div by id-->
+<!--        var mainSection = document.getElementById('main-section');-->
+
+<!--        console.log(mainSection.innerHTML);-->
+<!--        // Prints-->
+<!--        // <p>Paragraph 1</p>-->
+<!--        // <p>Paragraph 2</p>-->
+<!--    })();-->
+<!--</script>-->
+<!--<p id="demo"></p>-->
+
+<!--<p id="demoText"></p>-->
+
+
+<!--<script>-->
+
+
+<!--var grabDemo = document.getElementById ('demo');-->
+
+<!--grabDemo.innerHTML = '<b> Hello IO! </b>'-->
+<!--console.log(grabDemo.innerHTML);-->
+
+<!--var grabDemoText = document.getElementById('demoText');-->
+
+<!--grabDemoText.innerText = '<b> Hello Sara </b>'-->
+<!--console.log(grabDemoText.innerText);-->
+
+<!--</script>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <title>JavaScript Example</title>-->
+<!--</head>-->
+<!--<body bgcolor="#faebd7">-->
+<!--<p id="p1">To be or not to be?</p>-->
+<!--<p id="p2" data-playname="Hamlet">That is the question.</p>-->
+<!--<script>-->
+<!--    "use strict";-->
+<!--    (function() {-->
+<!--        // Change the style of p1 to 'font-size: 4rem'-->
+<!--        let p1 = document.getElementById('p1')-->
+<!--        p1.setAttribute('style', 'font-size: 4rem')-->
+<!--        // Get the data-* attribute from p2-->
+<!--        let p2 = document.getElementById('p2')-->
+<!--        let dataAttr = p2.getAttribute('data-playname')-->
+<!--        // Print the data-* attribute on the console log.-->
+<!--        alert(dataAttr)-->
+<!--    })();-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+</body>
+</html>
+
+
+
+

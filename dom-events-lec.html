@@ -1,0 +1,111 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>DOM Events</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button id="btn1">Click Me!</button>-->
+<!--<button id="btn2">Remove Event Listener</button>-->
+<!--<script>-->
+<!--    'use strict';-->
+
+<!--    var listener = function (event) {-->
+<!--        alert('You clicked the button!');-->
+<!--    }-->
+
+<!--    // add event listener to btn1-->
+<!--    var btn1 = document.getElementById('btn1');-->
+<!--    btn1.addEventListener('click', listener);-->
+
+<!--    var remover = function (event) {-->
+<!--        // remove event listener from btn1-->
+<!--        btn1.removeEventListener('click', listener);-->
+<!--        console.log('Event listener removed.');-->
+<!--    }-->
+
+<!--    // add event listener to btn2-->
+<!--    var btn2 = document.getElementById('btn2');-->
+<!--    btn2.addEventListener('click', remover);-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title></title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button id="btn1">Click Me!</button>-->
+<!--<script>-->
+<!--    'use strict';-->
+
+<!--    // create a handler function-->
+<!--    var listener = function (event) {-->
+<!--        alert('You clicked the button!');-->
+<!--    }-->
+
+<!--    // register the listener to handle clicks on btn1-->
+<!--    document.getElementById('btn1').addEventListener('click', listener);-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>DOM Events</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2 id="loop"></h2>-->
+<!--<script>-->
+<!--    'use strict';-->
+<!--    var mainHeading = document.getElementById('loop');-->
+
+
+<!--    function countTo10() {-->
+<!--        var count = 0;-->
+<!--        while (count <= 10) {-->
+<!--            console.log("Index: " + count++);-->
+<!--        }-->
+<!--    }-->
+
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<button id="me">Click Me!</button>
+<button id="removeMe">RemoveMe Button</button>
+<script>
+    'use strict';
+
+    var listenToMe = function (event) {
+        alert('You clicked me - Sahara');
+    }
+
+    var addingEvent = document.getElementById('me');
+        addingEvent.addEventListener('click', listenToMe);
+
+    var removingEvent = function(event) {
+        addingEvent.removeEventListener('click', listenToMe);
+        alert('You removed my event - Sahara');
+    }
+
+    var removeMeButton = document.getElementById('removeMe')
+    removeMeButton.addEventListener('click', removingEvent);
+
+
+</script>
+</body>
+</html>
