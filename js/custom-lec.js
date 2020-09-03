@@ -1,8 +1,6 @@
 "use strict";
 
-// $(document).ready(function() {
-//     alert("The DOM has finished loading!");
-// });
+
 
 // ID Selector
 // var contents = $('#codeup').html();
@@ -19,3 +17,7 @@ $('.important, p').css('background-color', '#FF0');
 
 // All Selector
 $('*').css('border', '1px solid #F00');
+
+// $(document).ready(function() {
+//     alert("The DOM has finished loading!");
+// });

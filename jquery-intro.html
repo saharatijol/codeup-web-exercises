@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning jQuery</title>
+</head>
+<body>
+<h1>Learning jQuery</h1>
+<input type="text" id="input">
+<button id="btn">Click</button>
+<section id="output"></section>
+
+<!--<script src="https://code.jquery.com/jquery-2.2.4.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script>
+    //This what clean and good practice code look, using IFFE
+    (function(){ //document loaded and ready
+        "use strict";
+        $().ready(function() {
+            $("#output").html("<h1>Hello World</h1>");
+            alert('The DOM has finished loading!');
+        });
+    })();
+</script>
+</body>
+</html>
