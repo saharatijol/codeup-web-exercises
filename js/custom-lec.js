@@ -15,3 +15,7 @@ $('.important').css('background-color', 'yellow');
 $('p').css('font-size', '14px');
 
 // Multiple Selectors
+$('.important, p').css('background-color', '#FF0');
+
+// All Selector
+$('*').css('border', '1px solid #F00');
