@@ -10,4 +10,4 @@ function avgArr(arr) {
 
 var arr = [4,5,6,7,9,6,7]
 
-console.log(sumArr[4,5,6,7,10]);
+console.log(sumArr(arr));
