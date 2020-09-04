@@ -3,7 +3,7 @@ var userInp = $(document).keyup(function(event){
     console.log(event.keyCode);
 
     var newArray = [];
-    for (var i = 0; i < )
+    // for (var i = 0; )
     newArray.push(event.keyCode);
 
     console.log(newArray);
