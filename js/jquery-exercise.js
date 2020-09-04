@@ -18,7 +18,7 @@
 // var contents = $('h1').html();
 // alert(contents);
 
-/*--------- Mouse Events Exercise --------*/
+/*----------- Mouse Events Exercise --------*/
 $('h1').click(function() {
    $(this).css('background-color', '#0f0');
 });
