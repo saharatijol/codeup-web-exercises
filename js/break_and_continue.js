@@ -1,23 +1,20 @@
 
-//////////// Break and Continue ////////////
-
-var numEntered = prompt("Enter an odd number between 1 - 50: ");
-
-while (isNaN(numEntered) || (numEntered%2 === 0)){
-    numEntered = prompt("Enter an odd number between 1 - 50: ");
-}
-console.log("Number to skip is: " + numEntered)
-
-for (let i = 1; i < 50; i++) {
-    if (i == numEntered) {
-        console.log("Yikes! Skipping that number: " + numEntered);
-        continue;
-    }
-    else if (i % 2 !== 0) {
-        console.log("Here is an odd number: " + i++);
+/*--------- Break and Continue Exercise -------*/
+function skipNumber(skipNum) {
+    var skipNum = prompt('Enter a number from 1 - 50:');
+    //console.log(skipNum);
+    for (let i = 1; i < 50; i++) {
+        if (i === parseInt(skipNum)) {
+            console.log(`Yikes! Skipping this number: ${skipNum}`);
+            continue;
+        }
+        else if (i % 2 === 1) {
+            console.log(`Here is an odd number: ${i}`);
+        }
     }
 }
+//skipNumber(skipNum);
 
 
 
-// if (i % 2 !== 0) {
+
