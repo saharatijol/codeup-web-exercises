@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee FAQ</title>
+    <style>
+        .invisible {
+            visibility : hidden;
+        }
+
+        .highlighted {
+            background-color: #FF0;
+        }
+
+        .bold {
+            font-weight: bolder;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        ul, #register {
+            display: none;
+        }
+
+    </style>
 </head>
 <body>
-  <h2>Tropical Mars Coffee Roasters</h2>
-  <h3>FAQ</h3>
+<div>
+    <h1>Would you like to sign up for our newsletter?<span>  X</span></h1>
+</div>
+<h2 id='register'>Would you like to register for the site?</h2>
 
+<h2>Tropical Mars Coffee Roasters</h2>
+<a href="#" id="toggle">Show details</a>
 <dl>
     <dt>Why Tropical Mars for coffee?</dt>
     <dd class="invisible">We only seek to serve the strongest coffee to our groggy customers and only beans from Mars can give you the maximum boost level you're looking for.</dd>
@@ -24,7 +50,7 @@
 
     <dt>Do you have a wholesale catalog or program?</dt>
     <dd class="invisible">We have developed a preliminary application for our Wholesale Opportunity Program right on our website that can be filled out and submitted here:
-    Tropical Mars Website and Application</dd>
+        Tropical Mars Website and Application</dd>
 
     <dt>Free Samples?</dt>
     <dd class="invisible">While we're working on caffeinating the entire world one cup of coffee at a time, we currently do not offer free samples. We do, however, offer a No BS 100% Money Back Guarantee.</dd>
@@ -42,7 +68,101 @@
     <dd class="invisible">As soon as your order is placed, we'll send you an email letting you know we've received your information and will begin putting together your shipment. The first email you receive will have several details within it, keeping you in the loop all the way through.</dd>
 </dl>
 
-  <script src="js/jquery-2.2.4.js"></script>
-  <script src="js/jquery-faq.js"></script>
+<button>Click for more info</button>
+<h3>FAQ 1</h3>
+<ul>
+    <li>We are titled "the World's Strongest Coffee" </li>
+    <li>blends are USDA Certified Organic and Fair Trade with no additives or ingredients beyond the organic coffee beans, our blend has only about two calories per cup, no carbs, protein, or fiber.</li>
+    <li>Through the extensive lab testing, we have conducted regularly, that our coffee is two times more caffeinated than your average cup of coffee.</li>
+    <li>We offer a No BS 100% Money Back Guarantee. If this isn’t the strongest coffee you’ve ever had, let us know within 30 days of purchase from our websitefor a full refund.</li>
+</ul>
+
+<h3>FAQ 2</h3>
+<ul>
+    <li>We are titled "the World's Strongest Coffee" </li>
+    <li>blends are USDA Certified Organic and Fair Trade with no additives or ingredients beyond the organic coffee beans, our blend has only about two calories per cup, no carbs, protein, or fiber.</li>
+    <li>Through the extensive lab testing, we have conducted regularly, that our coffee is two times more caffeinated than your average cup of coffee.</li>
+    <li>We offer a No BS 100% Money Back Guarantee. If this isn’t the strongest coffee you’ve ever had, let us know within 30 days of purchase from our websitefor a full refund.</li>
+</ul>
+
+<h3>FAQ 3</h3>
+<ul>
+    <li>We are titled "the World's Strongest Coffee" </li>
+    <li>blends are USDA Certified Organic and Fair Trade with no additives or ingredients beyond the organic coffee beans, our blend has only about two calories per cup, no carbs, protein, or fiber.</li>
+    <li>Through the extensive lab testing, we have conducted regularly, that our coffee is two times more caffeinated than your average cup of coffee.</li>
+    <li>We offer a No BS 100% Money Back Guarantee. If this isn’t the strongest coffee you’ve ever had, let us know within 30 days of purchase from our websitefor a full refund.</li>
+</ul>
+
+<h3>FAQ 4</h3>
+<ul>
+    <li>We are titled "the World's Strongest Coffee" </li>
+    <li>blends are USDA Certified Organic and Fair Trade with no additives or ingredients beyond the organic coffee beans, our blend has only about two calories per cup, no carbs, protein, or fiber.</li>
+    <li>Through the extensive lab testing, we have conducted regularly, that our coffee is two times more caffeinated than your average cup of coffee.</li>
+    <li>We offer a No BS 100% Money Back Guarantee. If this isn’t the strongest coffee you’ve ever had, let us know within 30 days of purchase from our websitefor a full refund.</li>
+</ul>
+
+
+<!--------------- jQuery and Bootstrap -------------->
+<script src="js/jquery-2.2.4.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+<!---------------- jQuery JS script ----------------->
+<script>
+    'use strict';
+
+    $('document').ready(function() {
+        $('a').click(function(event) {
+            //event.preventDefault();
+            $('dd').toggleClass('invisible')
+        });
+
+        $('dt').click(function(event) {
+            //event.preventDefault();
+            $(this).toggleClass('highlighted')
+        });
+
+        // $('button').click(function(event) {
+        //   //event.preventDefault();
+        //   $('li').each(function(index) {
+        //     $(this).css('background-color', '#FF0');
+        //   })
+        // });
+
+        // $('button').click(function(event) {
+        //   //event.preventDefault();
+        //   $('li').each(function(index) {
+        //     $(this).css('background-color', '#FF0');
+        //   })
+        // });
+
+        $('button').click(function() {
+            $('ul').each(function(){
+                //$(this).children(":last-child").addClass("highlighted");
+                $(this).children().last("li").addClass("highlighted")
+            })
+        });
+
+        $("li").click(function() {
+            $(this).parent().children("li").first().addClass("blue");
+        });
+
+        $('span').click(function() {
+            $('div').hide();
+        })
+
+        $('h3').click(function() {
+            //$(this).parent().children("li").addClass("bold");
+            $(this).next('ul').slideToggle();
+            $(this).next('ul').addClass("bold");
+        });
+
+        setTimeout(function () {
+            $('#register').fadeIn(900);
+        }, 8000);
+
+    });
+</script>
 </body>
 </html>
