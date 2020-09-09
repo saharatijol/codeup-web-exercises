@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Online Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
 
@@ -17,19 +18,49 @@
         </tr>
     </thead>
     <tbody id="insertProducts"></tbody>
+
 </table>
+<button id="refresh">Refresh</button>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
+<script src="js/jquery-2.2.4.js"></script>
 <script>
 (function() {
     "use strict";
     // TODO: Create an AJAX GET request for the file under data/inventory.json
+    var getProducts = function () {
+        $.get('data/inventory.json').done(function (data, status, jqXhr) {
+            //alert('AJAX call completed successfully!');
+            //console.log('Request status: ' + status);
+            //console.log('Data returned from server: ');
+            console.log(data);
+            var innerHTML = '';
+            data.forEach(function (item) {
+                //innerHTML += item['title'] +  item['quantity'] + item['price'] + item['categories'] + '<br>\n'
+                innerHTML += '<tr>'
+                innerHTML += '<td>' + item.title + '</td>'
+                innerHTML += '<td>' + item.quantity + '</td>'
+                innerHTML += '<td>' + item.price + '</td>'
+                innerHTML += '<td>' + item.categories + '</td>'
+                innerHTML += '</tr>'
+            })
+            innerHTML += '<br> \n';
+            $('#insertProducts').html(innerHTML);
+        });
+    }
+    $().ready(function() {
+        getProducts();
+
+        $('#refresh').click(function() {
+            getProducts();
+        })
+    })
 
     // TODO: Take the data from inventory.json and append it to the products table
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
     //       HINT: You will want to target #insertProducts for your new HTML elements
+
+
 })();
 </script>
 

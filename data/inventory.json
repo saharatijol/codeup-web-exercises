@@ -30,5 +30,31 @@
             "tool"
         ],
         "price": 10
+    }, {
+        "title": "Pliers",
+        "quantity": "35",
+        "categories": [
+            "tool",
+            "outdoor"
+        ],
+        "price": 10
+    },
+    {
+        "title": "Ratchet",
+        "quantity": "70",
+        "categories": [
+            "tool",
+            "automotive"
+        ],
+        "price": 18
+    },
+    {
+        "title": "Chainsaw",
+        "quantity": "35",
+        "categories": [
+            "tool",
+            "gardening"
+        ],
+        "price": 27
     }
 ]

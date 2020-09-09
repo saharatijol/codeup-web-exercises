@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<div id="posts"></div>
+
+
+<script src="js/jquery-2.2.4.js"></script>
+
+<script type="text/javascript">
+    (function() {
+        "use strict";
+        $().ready(function () {
+            $.get("data/blog.json").done(function(data, status, jqXhr) {
+                //alert("AJAX call completed successfully!");
+                //console.log("Request status: " + status);
+                console.log(data);
+                var innerHTML = '<br>';
+                data.forEach(function(post) {
+                    innerHTML += '<h2>' + post.title + '</h2>'
+                    innerHTML += '<a href="#">' + post.categories + '</a>'
+                    innerHTML += '<p>' + post.date + '</p>'
+                    innerHTML += '<p>' + post.content + '</p>'
+                })
+                innerHTML += '<br> \n';
+                $('#posts').html(innerHTML);
+            });
+        });
+    })();
+</script>
+</body>
+</html>
