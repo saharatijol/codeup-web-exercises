@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map API</title>
+
+    <!---------- Bootstrap CDN ----------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!------------ MapBox API ------------->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body>
+<h2>Weather Map API</h2>
+<h3>San Antonio Weather</h3>
+<div id="current-temp"></div>
+<hr>
+<div class="row mx-3" id="fiveDayForecast"></div>
+
+<div class="d-flex justify-content-center">
+<div id='map' style='width: 100%; height: 500px;'></div>
+</div>
+
+<script src="js/keys.js"></script>
+<script src="js/jquery-2.2.4.js"></script>
+
+<script>
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11'
+    });
+</script>
+
+
+<script type="text/javascript">
+    $().ready(function() {
+       var currentWeather = function () {
+        const api_endpoint = 'http://api.openweathermap.org/data/2.5/weather?'
+        var q = 'San Antonio';
+           $.get(`${api_endpoint}q=${q}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
+           console.log(data);
+           var innerHTML = '';
+
+           /*-------------- Current Weather Cloud Condition ----------------*/
+           innerHTML += '<img src="http://openweathermap.org/img/w/' + data.weather[0].icon + '.png">'
+           innerHTML += '<p>' + 'Cloud: ' + data.weather[0].description + '</p>'
+           /*--------------  Current Weather Render  ----------------*/
+           innerHTML += '<p>' + "Current Temp: " + data.main.temp + '<p>'
+           innerHTML += '<p>' + "Feels Like: " + data.main.feels_like + '</p>'
+           innerHTML += '<p>' + "Temp Min: " + data.main.temp_min + '</p>'
+           innerHTML += '<p>' + "Temp Max: " + data.main.temp_max + '</p>'
+           innerHTML += '<p>' + "Humidity: " + data.main.humidity + '</p>'
+           innerHTML += '<p>' + "Pressure: " + data.main.pressure + '</p>'
+
+           //innerHTML += '<br> \n'
+           $('#current-temp').html(innerHTML);
+       });
+       }
+       currentWeather();
+
+
+        var fiveDayForecast = function () {
+            const api_endpoint = 'http://api.openweathermap.org/data/2.5/forecast?'
+            var q = 'San Antonio';
+            $.get(`${api_endpoint}q=${q}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
+                console.log(data);
+                var innerHTML = '';
+
+                for (var i = 0; i < data.list.length; i++) {
+                    if (data.list[i].dt_txt.includes('15:00:00')) {
+                        innerHTML += '<div class="col">'
+                        innerHTML += '<p>' + data.list[i].dt_txt + '</p>'
+                        innerHTML += '<img src="http://openweathermap.org/img/w/' + data.list[i].weather[0].icon + '.png">'
+                        innerHTML += '<p>' + 'Max Temp: ' + data.list[i].main.temp_max + '</p>'
+                        innerHTML += '<p>' + 'Min Temp: ' + data.list[i].main.temp_min + '</p>'
+                        innerHTML += '<p>' + 'Description: ' + data.list[i].weather[0].description + '</p>'
+                        innerHTML += '<p>' + 'Humidity: ' + data.list[i].main.humidity + '</p>'
+                        innerHTML += '<p>' + 'Wind: ' + data.list[i].wind.speed + '</p>'
+                        innerHTML += '<p>' + 'Pressure: ' + data.list[i].main.pressure + '</p>'
+                        innerHTML += '</div>'
+                    }
+                $('#fiveDayForecast').html(innerHTML);
+                }
+            });
+        }
+        fiveDayForecast();
+
+        /*------------------ Mapbox API -------------------*/
+
+    });
+
+</script>
+</body>
+</html>

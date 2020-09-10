@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rocco Wather</title>
+</head>
+<body>
+
+
+<script src="js/keys.js"></script>
+<script>
+    (function () {
+        "use strict"
+        $(document).ready(function () {
+            $.get("https://api.openweathermap.org/data/2.5/forecast", {
+                APPID: OPEN_WEATHER_APPID,
+                id: 4726206,
+                units: "imperial"
+            }).done(function (data) {
+                console.log(data);
+// for(var i = 0; i < data.length; i++){}
+            })
+        })
+    })();
+</script>
+</body>
+</html>

@@ -132,6 +132,20 @@
                     (parseInt($(this).next().css("font-size"))*1.2) + "px"
             })
         });
+
+        // $.get("http://api.icndb.com/jokes/random").done(function(data) {
+        //     console.log(data.value.joke);
+        // })
+        var random = Math.ceil(Math.random() * 50);
+        $.get("https://swapi.dev/api/people/" + random).done(function(data) {
+            console.log(data.name);
+        })
+
+        const api_endpoint = "http://api.openweathermap.org/data/2.5/weather";
+        var q = "San Antonio"
+        $.get(api_endpoint + "?q=" + q + "appid=" + API_KEY).done(function(data) {
+            console.log(data);
+        })
     });
 
 </script>
