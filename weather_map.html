@@ -45,9 +45,11 @@
 </div>
 <!---------- End of MapBox ----------->
 
+
 <!-------- JS Keys and jQuery -------->
 <script src="js/keys.js"></script>
 <script src="js/jquery-2.2.4.js"></script>
+
 
 <script type="text/javascript">
     $().ready(function() {
@@ -78,8 +80,8 @@
         var fiveDayForecast = function () {
             const api_endpoint = 'http://api.openweathermap.org/data/2.5/forecast?'
             //var q = 'San Antonio';
-            var lat = 29.423017;
-            var lon = -98.48527;
+            var lat = latCoordinate.lat;
+            var lon = lonCoordinate.lng;
             $.get(`${api_endpoint}lat=${lat}&lon=${lon}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
                 console.log(data);
                 var innerHTML = '';
@@ -99,35 +101,53 @@
                     }
                 $('#fiveDayForecast').html(innerHTML);
                 }
+                console.log(lon, lat)
             });
         }
         fiveDayForecast();
 
-        /*------------- MapBox API ------------------*/
-        mapboxgl.accessToken = MAPBOX_TOKEN
-        var coordinates = document.getElementById('coordinates');
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-98.49028690861695, 29.4159976554852],
-            zoom: 10
-        });
 
-        var marker = new mapboxgl.Marker({
-            draggable: true
-        })
-            .setLngLat([-98.49028690861695, 29.4159976554852])
-            .addTo(map);
-
-        function onDragEnd() {
-            var lngLat = marker.getLngLat();
-            coordinates.style.display = 'block';
-            coordinates.innerHTML =
-                'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-        }
-
-        marker.on('dragend', onDragEnd);
     });
+
+        /*------------- MapBox API ------------------*/
+    mapboxgl.accessToken = MAPBOX_TOKEN
+    var coordinates = document.getElementById('coordinates');
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-98.49028690861695, 29.4159976554852],
+        zoom: 10
+    });
+
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([-98.49028690861695, 29.4159976554852])
+        .addTo(map);
+
+    function onDragEnd() {
+        var lngLat = marker.getLngLat();
+        coordinates.style.display = 'block';
+        coordinates.innerHTML =
+            'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+        //console.log(lngLat.lng);
+        //console.log(lngLat.lat);
+        console.log(lngLat);
+        return lngLat;
+    }
+
+    //console.log(marker.getLngLat());
+    marker.on('dragend', onDragEnd);
+
+    var latCoordinate = onDragEnd();
+    var lonCoordinate = onDragEnd();
+
+    /*---- NOTE ------
+      - I was able to access coordinates from mapbox drop pin and input it to longitude and latitude
+      within those values into 5-day forecast function. BUT, the forecast information is NOT UPDATING...
+
+     */
+
 </script>
 </body>
 </html>
