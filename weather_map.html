@@ -12,41 +12,56 @@
 </head>
 
 <body>
+
+<div class="d-flex flex-column align-items-center">
 <h2>Weather Map API</h2>
 <h3>San Antonio Weather</h3>
 <div id="current-temp"></div>
-<hr>
-<div class="row mx-3" id="fiveDayForecast"></div>
-
-<div class="d-flex justify-content-center">
-<div id='map' style='width: 100%; height: 500px;'></div>
 </div>
 
+<hr>
+
+<div class="row mx-3" id="fiveDayForecast"></div>
+
+<!------- Start of MapBox -------->
+<style>
+    .coordinates {
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        position: absolute;
+        bottom: 40px;
+        left: 10px;
+        padding: 5px 10px;
+        margin: 0;
+        font-size: 11px;
+        line-height: 18px;
+        border-radius: 3px;
+        display: none;
+    }
+</style>
+<div class="d-flex justify-content-center">
+    <div id='map' style='width: 100%; height: 500px;'></div>
+    <pre id="coordinates" class="coordinates"></pre>
+</div>
+<!---------- End of MapBox ----------->
+
+<!-------- JS Keys and jQuery -------->
 <script src="js/keys.js"></script>
 <script src="js/jquery-2.2.4.js"></script>
 
-<script>
-    mapboxgl.accessToken = MAPBOX_TOKEN;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11'
-    });
-</script>
-
-
 <script type="text/javascript">
     $().ready(function() {
-       var currentWeather = function () {
+       /*---------------- Current Weather Function ---------------*/
+        var currentWeather = function () {
         const api_endpoint = 'http://api.openweathermap.org/data/2.5/weather?'
         var q = 'San Antonio';
            $.get(`${api_endpoint}q=${q}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
            console.log(data);
+
            var innerHTML = '';
 
-           /*-------------- Current Weather Cloud Condition ----------------*/
            innerHTML += '<img src="http://openweathermap.org/img/w/' + data.weather[0].icon + '.png">'
-           innerHTML += '<p>' + 'Cloud: ' + data.weather[0].description + '</p>'
-           /*--------------  Current Weather Render  ----------------*/
+           innerHTML += '<p>' + 'Description: ' + data.weather[0].description + '</p>'
            innerHTML += '<p>' + "Current Temp: " + data.main.temp + '<p>'
            innerHTML += '<p>' + "Feels Like: " + data.main.feels_like + '</p>'
            innerHTML += '<p>' + "Temp Min: " + data.main.temp_min + '</p>'
@@ -54,30 +69,31 @@
            innerHTML += '<p>' + "Humidity: " + data.main.humidity + '</p>'
            innerHTML += '<p>' + "Pressure: " + data.main.pressure + '</p>'
 
-           //innerHTML += '<br> \n'
            $('#current-temp').html(innerHTML);
        });
        }
        currentWeather();
 
-
+       /*------------------ 5-Day Forecast Function --------------------*/
         var fiveDayForecast = function () {
             const api_endpoint = 'http://api.openweathermap.org/data/2.5/forecast?'
-            var q = 'San Antonio';
-            $.get(`${api_endpoint}q=${q}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
+            //var q = 'San Antonio';
+            var lat = 29.423017;
+            var lon = -98.48527;
+            $.get(`${api_endpoint}lat=${lat}&lon=${lon}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
                 console.log(data);
                 var innerHTML = '';
 
                 for (var i = 0; i < data.list.length; i++) {
                     if (data.list[i].dt_txt.includes('15:00:00')) {
                         innerHTML += '<div class="col">'
-                        innerHTML += '<p>' + data.list[i].dt_txt + '</p>'
+                        innerHTML += '<p>' + data.list[i].dt_txt.split(" ")[0] + '</p>'
                         innerHTML += '<img src="http://openweathermap.org/img/w/' + data.list[i].weather[0].icon + '.png">'
                         innerHTML += '<p>' + 'Max Temp: ' + data.list[i].main.temp_max + '</p>'
                         innerHTML += '<p>' + 'Min Temp: ' + data.list[i].main.temp_min + '</p>'
                         innerHTML += '<p>' + 'Description: ' + data.list[i].weather[0].description + '</p>'
                         innerHTML += '<p>' + 'Humidity: ' + data.list[i].main.humidity + '</p>'
-                        innerHTML += '<p>' + 'Wind: ' + data.list[i].wind.speed + '</p>'
+                        innerHTML += '<p>' + 'Wind Speed: ' + data.list[i].wind.speed + '</p>'
                         innerHTML += '<p>' + 'Pressure: ' + data.list[i].main.pressure + '</p>'
                         innerHTML += '</div>'
                     }
@@ -87,10 +103,36 @@
         }
         fiveDayForecast();
 
-        /*------------------ Mapbox API -------------------*/
+        /*------------- MapBox API ------------------*/
+        mapboxgl.accessToken = MAPBOX_TOKEN
+        var coordinates = document.getElementById('coordinates');
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-98.49028690861695, 29.4159976554852],
+            zoom: 10
+        });
 
+        var marker = new mapboxgl.Marker({
+            draggable: true
+        })
+            .setLngLat([-98.49028690861695, 29.4159976554852])
+            .addTo(map);
+
+        function onDragEnd() {
+            var lngLat = marker.getLngLat();
+            coordinates.style.display = 'block';
+            coordinates.innerHTML =
+                'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+        }
+
+        marker.on('dragend', onDragEnd);
     });
-
 </script>
 </body>
 </html>
+
+
+
+
+
