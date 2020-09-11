@@ -1,5 +1,6 @@
 body {
-    background: url('../img/sky_bg.jpg') repeat center/cover;
+    background: url('../img/sky_bg1.jpg') center;
+    /*overflow: hidden;*/
 }
 
 .card {
