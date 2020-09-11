@@ -21,7 +21,8 @@
 
 <!--<hr>-->
 
-<div class="card-deck my-5 mx-2" id="fiveDayForecast"></div>
+<div class="card-deck my-5 mx-2" id="fiveDayForecast">
+</div>
 
 <!------- Start of MapBox -------->
 <style>
@@ -85,10 +86,10 @@
        currentWeather();
 
        /*------------------ 5-Day Forecast Function --------------------*/
-        var fiveDayForecast = function () {
+        var fiveDayForecast = function (lon, lat) {
             const api_endpoint = 'http://api.openweathermap.org/data/2.5/forecast?'
-            var lat = latCoordinate.lat;
-            var lon = lonCoordinate.lng;
+            // var lat = coordinatesLngLat.lat;
+            // var lon = coordinatesLngLat.lng;
             // var lat = 29.423017;
             // var lon = -98.48527;
             $.get(`${api_endpoint}lat=${lat}&lon=${lon}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
@@ -112,12 +113,9 @@
                     }
                 $('#fiveDayForecast').html(innerHTML);
                 }
-                //console.log(lon, lat)
             });
         }
-        fiveDayForecast();
-    });
-
+        //fiveDayForecast();
         /*------------- MapBox API ------------------*/
     mapboxgl.accessToken = MAPBOX_TOKEN
     var coordinates = document.getElementById('coordinates');
@@ -131,7 +129,7 @@
     var marker = new mapboxgl.Marker({
         draggable: true
     })
-        .setLngLat([-98.49028690861695, 29.4159976554852])
+        .setLngLat([-98.49028690861695, 29.4159976554852]) //latitude draw this outside of both apis
         .addTo(map);
 
     function onDragEnd() {
@@ -141,15 +139,17 @@
             'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
         //console.log(lngLat.lng);
         //console.log(lngLat.lat);
+        fiveDayForecast(lngLat.lng, lngLat.lat);
         console.log(lngLat);
-        return lngLat;
     }
+
+
 
     //console.log(marker.getLngLat());
     marker.on('dragend', onDragEnd);
 
-    var latCoordinate = onDragEnd();
-    var lonCoordinate = onDragEnd();
+    //var latCoordinate = onDragEnd();
+    var coordinatesLngLat = onDragEnd();
 
 
     /*---- NOTE ------
@@ -157,6 +157,8 @@
       within those values into 5-day forecast function. BUT, the forecast information is NOT UPDATING...
 
      */
+    });
+
 
     $('body').mousemove(function(e) {
         var moveX = (e.pageX * -1 / 10);
