@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Morning pushups</title>
+</head>
+<body>
+
+
+<script>
+
+    /*------------------------------------------------------------------------------------/
+    Morning Pushups: Given an array of objects, each with a price property,               /
+    find the highest-priced item. Next, find the lowest-priced item. Maybe also find the  /
+    one with the greatest quantity property and lowest quantity. Maybe find the average   /
+    price and the total quantity of all the items.                                        /
+    -------------------------------------------------------------------------------------*/
+
+/*------- My Solution --------*/
+function highestPrice(arr) {
+    let newArray = [];
+    for (let i = 0; i < arr.length; i++) {
+       newArray.push(arr[i].price)
+        console.log(newArray)
+    }
+    console.log(Math.max(...newArray));
+    return Math.max(...newArray);
+}
+
+var findTheGreatest = function(items) {
+    var greatest = 0;
+    for (var i = 0; i < items.length; i++) {
+        var greatest = 0;
+        //var greatest = {price:0};
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].price > greatest) {
+            //if (items[i].price > greatest.price) {
+                greatest = items[i].price
+            }
+        }
+        return greatest
+    }
+}
+
+
+/*-------- In Class Solution ---------*/
+var findTheLeast = function(items) {
+    var least = {price:Infinity};
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].price < least) {
+        //if (items[i].price < least.price) {
+            least = items[i].price
+        }
+    }
+    return least;
+}
+
+
+/*------- Invoke Function -------*/
+highestPrice(    [
+    {
+        "title": "Hammer",
+        "quantity": 25,
+        "categories": [
+            "tool"
+        ],
+        "price": 20
+    }, {
+        "title": "Drill",
+        "quantity": 5,
+        "categories": [
+            "tool",
+            "powered"
+        ],
+        "price": 100
+    }, {
+        "title": "Mower",
+        "quantity": 5,
+        "categories": [
+            "tool",
+            "gas",
+            "outdoor"
+        ],
+        "price": 200
+    }, {
+        "title": "Screwdriver",
+        "quantity": 25,
+        "categories": [
+            "tool"
+        ],
+        "price": 10
+    },    {
+        "title": "Computer",
+        "quantity": 2,
+        "categories": [
+            "tool"
+        ],
+        "price": 699
+    }, {
+        "title": "Pencil",
+        "quantity": 500,
+        "categories": [
+            "tool"
+        ],
+        "price": 1
+    }, {
+        "title": "Tesla",
+        "quantity": 5,
+        "categories": [
+            "electric",
+            "car",
+            "outdoor"
+        ],
+        "price": 50000
+    }, {
+        "title": "Blue Jeans",
+        "quantity": 27,
+        "categories": [
+            "clothing"
+        ],
+        "price": 27
+    }
+    ])
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

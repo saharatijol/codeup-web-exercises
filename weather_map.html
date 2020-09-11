@@ -14,9 +14,8 @@
 
 <body>
 
-<h2 class="text-center">Weather Map API</h2>
+<h2 class="text-center my-4">Weather Map API</h2>
 <div class="">
-<h3 class="text-center">San Antonio Weather</h3>
 <div class="card-group text-center rounded-3 mx-auto my-5 p-3" id="current-weather" style="width: 40%"></div>
 </div>
 
@@ -41,7 +40,7 @@
     }
 </style>
 <div class="d-flex justify-content-center my-5">
-    <div id='map' class="rounded-lg" style='width: 90%; height: 500px;'></div>
+    <div id='map' class="rounded-lg" style='width: 90%; height: 560px;'></div>
     <pre id="coordinates" class="coordinates"></pre>
 </div>
 <!---------- End of MapBox ----------->
@@ -66,17 +65,18 @@
 
            innerHTML += '<div class="card bg-secondary text-white p-3">'
            innerHTML += '<div class="col">'
-           innerHTML += '<p>' + "Current Temp: " + data.main.temp + ' &#8457' +'<p>'
+           innerHTML += '<h5>' + "Today in " + data.name +'</h5>'
+           innerHTML += '<h3>' + data.main.temp + ' &#8457' +'</h3>'
            innerHTML += '<img src="http://openweathermap.org/img/w/' + data.weather[0].icon + '.png">'
            innerHTML += '<p>' + 'Description: ' + data.weather[0].description + '</p>'
            innerHTML += '<p>' + "Feels Like: " + data.main.feels_like + ' &#8457' + '</p>'
            innerHTML += '</div>'
            innerHTML += '</div>'
-           innerHTML += '<div class="card bg-secondary text-white p-3">'
+           innerHTML += '<div class="card d-flex flex-column justify-content-center bg-secondary text-white p-3">'
            innerHTML += '<p>' + "Low: " + data.main.temp_min + ' &#8457' +'</p>'
            innerHTML += '<p>' + "High: " + data.main.temp_max + ' &#8457' +'</p>'
-           innerHTML += '<p>' + "Humidity: " + data.main.humidity + '</p>'
-           innerHTML += '<p>' + "Pressure: " + data.main.pressure + '</p>'
+           innerHTML += '<p>' + "Humidity: " + data.main.humidity + '%' + '</p>'
+           innerHTML += '<p>' + "Pressure: " + data.main.pressure + 'mb' + '</p>'
            innerHTML += '</div>'
 
                $('#current-weather').html(innerHTML);
@@ -87,10 +87,10 @@
        /*------------------ 5-Day Forecast Function --------------------*/
         var fiveDayForecast = function () {
             const api_endpoint = 'http://api.openweathermap.org/data/2.5/forecast?'
-            // var lat = latCoordinate.lat;
-            // var lon = lonCoordinate.lng;
-            var lat = 29.423017;
-            var lon = -98.48527;
+            var lat = latCoordinate.lat;
+            var lon = lonCoordinate.lng;
+            // var lat = 29.423017;
+            // var lon = -98.48527;
             $.get(`${api_endpoint}lat=${lat}&lon=${lon}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
                 console.log(data);
                 var innerHTML = '';
@@ -104,9 +104,9 @@
                         innerHTML += '<p>' + 'High: ' + data.list[i].main.temp_max + ' &#8457' + '</p>'
                         innerHTML += '<p>' + 'Low: ' + data.list[i].main.temp_min + ' &#8457' + '</p>'
                         innerHTML += '<p>' + 'Description: ' + data.list[i].weather[0].description + '</p>'
-                        innerHTML += '<p>' + 'Humidity: ' + data.list[i].main.humidity + '</p>'
+                        innerHTML += '<p>' + 'Humidity: ' + data.list[i].main.humidity + '%' + '</p>'
                         innerHTML += '<p>' + 'Wind Speed: ' + data.list[i].wind.speed + '</p>'
-                        innerHTML += '<p>' + 'Pressure: ' + data.list[i].main.pressure + '</p>'
+                        innerHTML += '<p>' + 'Pressure: ' + data.list[i].main.pressure + 'mb' + '</p>'
                         innerHTML += '</div>'
                         innerHTML += '</div>'
                     }
@@ -159,10 +159,11 @@
      */
 
     $('body').mousemove(function(e) {
-        var moveX = (e.pageX * -1 / 15);
-        var moveY = (e.pageY * -1 / 15);
+        var moveX = (e.pageX * -1 / 10);
+        var moveY = (e.pageY * -1 / 10);
         $(this).css('background-position', moveX + 'px ' + moveY + 'px ')
     });
+
 
 </script>
 
