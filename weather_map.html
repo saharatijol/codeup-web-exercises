@@ -9,19 +9,20 @@
     <!------------ MapBox API ------------->
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/weathermap.css">
 </head>
 
 <body>
 
-<div class="d-flex flex-column align-items-center">
-<h2>Weather Map API</h2>
-<h3>San Antonio Weather</h3>
-<div id="current-temp"></div>
+<h2 class="text-center">Weather Map API</h2>
+<div class="">
+<h3 class="text-center">San Antonio Weather</h3>
+<div class="card-group text-center rounded-3 mx-auto my-5 p-3" id="current-weather" style="width: 40%"></div>
 </div>
 
-<hr>
+<!--<hr>-->
 
-<div class="row mx-3" id="fiveDayForecast"></div>
+<div class="card-deck my-5 mx-2" id="fiveDayForecast"></div>
 
 <!------- Start of MapBox -------->
 <style>
@@ -51,6 +52,7 @@
 <script src="js/jquery-2.2.4.js"></script>
 
 
+
 <script type="text/javascript">
     $().ready(function() {
        /*---------------- Current Weather Function ---------------*/
@@ -62,16 +64,22 @@
 
            var innerHTML = '';
 
+           innerHTML += '<div class="card bg-secondary text-white p-3">'
+           innerHTML += '<div class="col">'
+           innerHTML += '<p>' + "Current Temp: " + data.main.temp + ' &#8457' +'<p>'
            innerHTML += '<img src="http://openweathermap.org/img/w/' + data.weather[0].icon + '.png">'
            innerHTML += '<p>' + 'Description: ' + data.weather[0].description + '</p>'
-           innerHTML += '<p>' + "Current Temp: " + data.main.temp + '<p>'
-           innerHTML += '<p>' + "Feels Like: " + data.main.feels_like + '</p>'
-           innerHTML += '<p>' + "Temp Min: " + data.main.temp_min + '</p>'
-           innerHTML += '<p>' + "Temp Max: " + data.main.temp_max + '</p>'
+           innerHTML += '<p>' + "Feels Like: " + data.main.feels_like + ' &#8457' + '</p>'
+           innerHTML += '</div>'
+           innerHTML += '</div>'
+           innerHTML += '<div class="card bg-secondary text-white p-3">'
+           innerHTML += '<p>' + "Low: " + data.main.temp_min + ' &#8457' +'</p>'
+           innerHTML += '<p>' + "High: " + data.main.temp_max + ' &#8457' +'</p>'
            innerHTML += '<p>' + "Humidity: " + data.main.humidity + '</p>'
            innerHTML += '<p>' + "Pressure: " + data.main.pressure + '</p>'
+           innerHTML += '</div>'
 
-           $('#current-temp').html(innerHTML);
+               $('#current-weather').html(innerHTML);
        });
        }
        currentWeather();
@@ -79,34 +87,35 @@
        /*------------------ 5-Day Forecast Function --------------------*/
         var fiveDayForecast = function () {
             const api_endpoint = 'http://api.openweathermap.org/data/2.5/forecast?'
-            //var q = 'San Antonio';
-            var lat = latCoordinate.lat;
-            var lon = lonCoordinate.lng;
+            // var lat = latCoordinate.lat;
+            // var lon = lonCoordinate.lng;
+            var lat = 29.423017;
+            var lon = -98.48527;
             $.get(`${api_endpoint}lat=${lat}&lon=${lon}&units=imperial&appid=${OPEN_WEATHER_APPID}`).done(function(data) {
                 console.log(data);
                 var innerHTML = '';
 
                 for (var i = 0; i < data.list.length; i++) {
                     if (data.list[i].dt_txt.includes('15:00:00')) {
+                        innerHTML += '<div class="card text-white text-center bg-secondary rounded-3 mb-3">'
+                        innerHTML += '<div class="card-header text-center">' + data.list[i].dt_txt.split(" ")[0] + '</div>'
                         innerHTML += '<div class="col">'
-                        innerHTML += '<p>' + data.list[i].dt_txt.split(" ")[0] + '</p>'
                         innerHTML += '<img src="http://openweathermap.org/img/w/' + data.list[i].weather[0].icon + '.png">'
-                        innerHTML += '<p>' + 'Max Temp: ' + data.list[i].main.temp_max + '</p>'
-                        innerHTML += '<p>' + 'Min Temp: ' + data.list[i].main.temp_min + '</p>'
+                        innerHTML += '<p>' + 'High: ' + data.list[i].main.temp_max + ' &#8457' + '</p>'
+                        innerHTML += '<p>' + 'Low: ' + data.list[i].main.temp_min + ' &#8457' + '</p>'
                         innerHTML += '<p>' + 'Description: ' + data.list[i].weather[0].description + '</p>'
                         innerHTML += '<p>' + 'Humidity: ' + data.list[i].main.humidity + '</p>'
                         innerHTML += '<p>' + 'Wind Speed: ' + data.list[i].wind.speed + '</p>'
                         innerHTML += '<p>' + 'Pressure: ' + data.list[i].main.pressure + '</p>'
                         innerHTML += '</div>'
+                        innerHTML += '</div>'
                     }
                 $('#fiveDayForecast').html(innerHTML);
                 }
-                console.log(lon, lat)
+                //console.log(lon, lat)
             });
         }
         fiveDayForecast();
-
-
     });
 
         /*------------- MapBox API ------------------*/
@@ -142,13 +151,23 @@
     var latCoordinate = onDragEnd();
     var lonCoordinate = onDragEnd();
 
+
     /*---- NOTE ------
       - I was able to access coordinates from mapbox drop pin and input it to longitude and latitude
       within those values into 5-day forecast function. BUT, the forecast information is NOT UPDATING...
 
      */
 
+    $('body').mousemove(function(e) {
+        var moveX = (e.pageX * -1 / 15);
+        var moveY = (e.pageY * -1 / 15);
+        $(this).css('background-position', moveX + 'px ' + moveY + 'px ')
+    });
+
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
 
