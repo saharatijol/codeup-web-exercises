@@ -1,111 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!------------------------- Mapbox API CDNs ------------------------->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
-
+    <meta charset=utf-8 />
+    <title>Query the Geocoder control results in code</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
 </head>
 <body>
-<!--Geocoder plugins -->
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css"/>
-<!-- End of Geocoder plugins-->
-
-<h1>Mapbox API Exercise</h1>
-<script src="js/keys.js"></script>
-
-<div id='map' style='width: 800px; height: 400px;'></div>
-
+<style>
+    pre.ui-output {
+        display:block;
+        position:absolute;
+        bottom:10px;
+        left:10px;
+        padding:5px 10px;
+        background:rgba(0,0,0,0.5);
+        color:#fff;
+        font-size:11px;
+        line-height:18px;
+        border-radius:3px;
+        max-height:50%;
+        max-width:25%;
+        overflow:auto;
+        word-wrap: break-word;
+        white-space:pre-wrap;
+    }
+    pre.ui-output:empty { padding:0; }
+</style>
+<div id='map'></div>
+<pre id='output' class='ui-output'></pre>
 <script>
-    mapboxgl.accessToken = MAPBOX_TOKEN;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-98.4843385, 29.4328113],
-        zoom: 12
+    L.mapbox.accessToken = 'pk.eyJ1Ijoic3Rpam9sIiwiYSI6ImNrZWQ3bjIyeTBwcnYzNm8xOGQ0bHlpNDkifQ.MpWan7kimX79GfC9JYqcRA';
+    var output = document.getElementById('output');
+    var map = L.mapbox.map('map')
+        .setView([43.945, 19.380], 5)
+        .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+
+    // Initialize the geocoder control and add it to the map.
+    var geocoderControl = L.mapbox.geocoderControl('mapbox.places');
+    geocoderControl.addTo(map);
+
+    // Listen for the `found` result and display the first result
+    // in the output container. For all available events, see
+    // https://www.mapbox.com/mapbox.js/api/v3.3.1/l-mapbox-geocodercontrol/#section-geocodercontrol-on
+
+
+
+    geocoderControl.on('found', function(res) {
+        output.innerHTML = JSON.stringify(res.results.features[0]);
+
     });
-
-
-    /*---------------- Old Code -------------------*/
-    // let faveRestoMark1 = new mapboxgl.Marker()
-    // .setLngLat([-98.4843385, 29.4328113]) //Pete's Tako House
-    // .addTo(map);
-
-    // let faveRestoPop1 = new mapboxgl.Popup()
-    // .setHTML("<p>Pete's Tako House</p>")
-    // // .addTo(map); This prevents the default pop-up to display. why? Idk
-    // faveRestoMark1.setPopup(faveRestoPop1)
-
-    // let faveRestoMark2 = new mapboxgl.Marker()
-    // .setLngLat ([-98.478222, 29.4419502]) //Mi Roti
-    // .addTo(map);
-
-    // let faveRestoPop2 = new mapboxgl.Popup()
-    // .setHTML("<p>Mi Roti</p>")
-    // faveRestoMark2.setPopup(faveRestoPop2)
-
-    // let faveRestoMark3 = new mapboxgl.Marker()
-    // .setLngLat ([-98.48789, 29.425126]) //Bier Garten Riverwalk
-    // .addTo(map);
-
-    // let faveRestoPop3 = new mapboxgl.Popup()
-    // .setHTML("<p>Bier Garten Riverwalk</p>")
-    // faveRestoMark3.setPopup(faveRestoPop3)
-
-    // let faveRestoMark4 = new mapboxgl.Marker()
-    // .setLngLat ([-98.491542, 29.428558]) //Kimura
-    // .addTo(map);
-
-    // let faveRestoPop4 = new mapboxgl.Popup()
-    // .setHTML("<p>Kimura</p>")
-    // faveRestoMark4.setPopup(faveRestoPop4)
-
-    /*--------------Refactoring ---------------*/
-    let faveRestos =
-        [{
-            name: "Pete's Tako House",
-            coordinates: [-98.4843385, 29.4328113]
-        },
-            {
-                name: "Mi Roti",
-                coordinates: [-98.478222, 29.4419502]
-            },
-            {
-                name: "Bier Garten",
-                coordinates: [-98.48789, 29.425126]
-            },
-            {
-                name: "Kimura",
-                coordinates: [-98.491542, 29.428558]
-            }
-        ];
-
-    faveRestos.forEach(function placeMarkupAndPopUp(resto) {
-        var popup = new mapboxgl.Popup()
-            .setHTML(resto.name);
-
-        var marker = new mapboxgl.Marker()
-            .setLngLat(resto.coordinates)
-            .addTo(map)
-            .setPopup(popup);
-        //popup.addTo(map); All popups show by default bec of this
-    });
-
-
-    /*-------------- Geocoder ---------------*/
-    map.addControl(
-        new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl
-        })
-    );
 </script>
-
-
 </body>
 </html>
-
