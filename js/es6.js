@@ -73,29 +73,36 @@ let emails = [];
 let names = [];
 
 // TODO: rewrite the following using arrow functions
-users.forEach(function(user) {
-  return emails.push(user.email);
-});
-users.forEach(function(user) {
-  return names.push(user.name);
-});
+// users.forEach(function(user) {
+//   return emails.push(user.email);
+// });
+// users.forEach(function(user) {
+//   return names.push(user.name);
+// });
 
 //My answer:
-let newEmail = user => {
-  for (let user of users) {
-    return emails.push(user.email)
-  }
-}
+// let newEmail = user => {
+//   for (let user of users) {
+//     return emails.push(user.email)
+//   }
+// }
+//
+// let newName = user => {
+//   for (let user of users) {
+//     return names.push(user.name)
+//   }
+// }
 
-let newName = user => {
-  for (let user of users) {
-    return names.push(user.name)
-  }
-}
+/*------------ Walkthrough answer-------------*/
+users.forEach(user => emails.push(user.email));
+users.forEach(user => names.push(user.name));
+
 
 // TODO: replace `var` with `let` in the following declaration
 let developers = [];
-users.forEach(function(user) {
+// users.forEach(function(user) {
+  //*-------- Answer from Walkthrough --------*/
+  users.forEach(function({name, email, languages}) {
   // TODO: rewrite the code below to use object destructuring assignment
   //       note that you can also use destructuring assignment in the function
   //       parameter definition
@@ -103,7 +110,8 @@ users.forEach(function(user) {
   // const email = user.email;
   // const languages = user.languages;
 
-  let {name, email, languages} = user
+  //My answer:
+  // let {name, email, languages} = user
 
   /*---- Console Check ------*/
   // console.log(name)
@@ -114,7 +122,8 @@ users.forEach(function(user) {
   // developers.push(name + '\'s email is ' + email + name + ' knows ' + languages.join(', '));
 //});
 
-developers.push(`${name}'s email is ${email} ${name} knows ${languages.join(', ')}`)});
+developers.push(`${name}'s email is ${email} ${name} knows ${languages.join(', ')}`)
+  });
 //console.log(developers.push(`${name}'s email is ${email} ${name} knows ${languages.join(', ')}`));
 
 // TODO: Use `let` for the following variable
@@ -138,4 +147,5 @@ for (let developer of developers) {
 }
 list += `</ul>`
 console.log(developers)
+document.write(list);
 
