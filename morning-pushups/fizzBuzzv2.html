@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fizzBuzz</title>
+</head>
+<body>
+<h2>FizzBuzz v2.0</h2>
+<p>Enter a number</p>
+<input id="input" type="text">
+<button id="generate">Generate!</button>
+<div id="output"></div>
+
+<script src="../js/jquery-2.2.4.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#generate').click(function() {
+        var num = $('#input').val()
+        fizzBuzz(num)
+        $('#output').html(fizzBuzz(num).split("<br> ") + '<br>')
+    })
+
+    function fizzBuzz(num) {
+        var fizzBuzzArr = [];
+        var count = 1;
+
+        while (count <= num) {
+            if (count % 3 == 0 && count % 5 == 0) {
+                //Note: it is important on how you order your if-else statements
+                fizzBuzzArr.push('FizzBuzz');
+            } else if (count % 5 == 0) {
+                fizzBuzzArr.push('Buzz');
+            } else if (count % 3 == 0) {
+                fizzBuzzArr.push('Fizz');
+            } else {
+                fizzBuzzArr.push(count);
+            }
+            count++;
+        }
+        console.log(fizzBuzzArr);
+        return fizzBuzzArr
+    }
+    //fizzBuzz(50)
+    })
+</script>
+
+</body>
+</html>

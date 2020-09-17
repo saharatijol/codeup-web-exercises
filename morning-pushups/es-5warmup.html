@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES5 morning warmup</title>
+</head>
+<body>
+<main>
+    <div>bob</div>
+    <div>STEVE</div>
+    <div>sAlLY</div>
+</main>
+<script type="text/javascript">
+    'use strict';
+    var fullName = {lName: 'smith'};
+
+    // function grabFirstName() {
+    //     var firstName = document.getElementsByTagName('div');
+    //     //console.log(firstName);
+    //     for (var i = 0; i < firstName.length; i++) {
+    //         console.log(firstName[i].innerHTML + " " + name.lName);
+    //     }
+    // }
+    // grabFirstName();
+
+    // function fixCase() {
+    //     var firstName = document.getElementsByTagName('div');
+    //     //console.log(firstName);
+    //     var lastName = name.lName.split("");
+    //     var lastNameCap = (lastName[0].toUpperCase());
+    //
+    // }
+    // fixCase();
+
+        var divs = document.querySelectorAll("div");
+        for (var i = 0; i < divs.length; i += 1) {
+            // fullName.lName = setCase(fullName.lName)
+            // divs[i].innerText = setCase(divs[i].innerText)
+            //divs[i].innerText = divs[i].innerText + " " + fullName.lName;
+            //Solution in class:
+            divs[i].innerText = setCase(divs[i].innerText) + " " + setCase(fullName.lName);
+        }
+
+        function setCase(str) {
+            return str[0].toUpperCase() + str.substring(1).toLowerCase();
+        }
+
+
+
+</script>
+</body>
+</html>
