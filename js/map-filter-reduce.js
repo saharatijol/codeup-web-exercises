@@ -98,7 +98,7 @@ const uniqueLanguages = splitLangList.filter((language, index, array) =>
 //console.dir(splitLangList);
 //console.dir(uniqueLanguages);
 
-// Using [...new Set(languageList)]
+//*=========== Using [...new Set(languageList)] ==============*//
 // const languageList = users.reduce((accum, {languages}) => {
 //     return accum + languages + ',';
 // }, [])
