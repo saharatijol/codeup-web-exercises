@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map Filter Reduce Mini Exercise</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    // TODO: Given the following array, complete the todos...
+
+    const dogs = [
+        {
+            name: 'bubbles',
+            age: 10,
+            isTrained: false
+        },
+        {
+            name: 'lexie',
+            age: 3,
+            isTrained: true
+        },
+        {
+            name: 'doggy',
+            age: 5,
+            isTrained: false
+        }
+    ];
+
+
+    /*================== MAP Mini Lab ==================*/
+    // TODO: using map, create a new array of dog names from the dogs array
+    // const dogNames = dogs.map(({name}) => name);
+    // console.log(dogNames)
+
+    //OR MORE DESCRIPTIVE
+    // const dogNames = dogs.map(dog => dog.name);
+    // console.log(dogNames)
+
+    // OR FOR BETTER FUNCTIONALITY, FOR MORE COMPLEX CALCULATIONS
+    // function returnName(dog) {
+    //     return dog.name;
+    // }
+    // const dogNames = dogs.map(returnName);
+
+    // TODO: using map, create a new array of dog ages from the dogs array
+    // const dogAges = dogs.map(({age}) => age);
+    // console.log(dogAges)
+
+    // TODO: using map, create a new array of dog objects from the dogs array that only have name and age property values
+    // const dogNameAndAge = dogs.map(({ name, age }) => ({name, age}) );
+    // console.log(dogNameAndAge)
+
+    //OR MORE EXPLICIT Version
+    // const dogsNameAndAge = dogs.map((dog) => {
+    //     return {
+    //         name: dog.name,
+    //         age: dog.age
+    //     }
+    // });
+
+
+
+
+    /*===================== FILTER Mini Lab =====================*/
+    // TODO: using filter, create a new array containing only dogs younger than 10 years old
+    const younger10 = dogs.filter(dog => dog.age < 10);
+    console.log(younger10);
+
+    // TODO: using filter, create a new array containing only dogs named 'lexie'
+    const justLexie = dogs.filter(dog => dog.name === 'lexie');
+    console.log(justLexie);
+
+    // TODO: using filter, create a new array containing only dogs that are trained and younger than 10
+    const youngAndTrained = dogs.filter(dog => dog.age < 10 && dog.isTrained);
+    console.log(youngAndTrained)
+</script>
+
+</body>
+</html>
