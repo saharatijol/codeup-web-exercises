@@ -84,34 +84,46 @@ const users = [
 // TODO: Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
 
 const longUserName = users.reduce((accum, {name}) => {
-    return accum + name + ', '
+    return `Your instructors are: ${accum + name + ', '}`
 }, '')
 
-console.log(`Your instructors are: ${longUserName}`);
+//console.log(longUserName);
 
 // TODO: BONUS! Use .reduce to get the unique list of languages from the list of users
 
+//My Answer:
 const languageList = users.reduce((accum, {languages}) => {
     return accum + languages + ',';
 }, [])
+
 console.log(languageList);
 
 let splitLangList = languageList.split(",");
-//const uniqueLanguages = splitLangList.filter((language, index, array) => array.indexOf(language) === index)
+const uniqueLanguages = splitLangList.filter((language, index, array) =>
+    array.indexOf(language) === index).slice(0, -1); //sliced thru the whole thing --> .filter(....).slice( , )
 
-console.log(splitLangList);
-//console.log(uniqueLanguages.slice(0, -1));
+console.dir(splitLangList);
+console.dir(uniqueLanguages);
 
-function uniqueLanguages(list) {
-    let filteredArr = [];
-    for (let i = 0; i < list.length - 1; i++) {
-        if (list.indexOf(list[i]) === i) {
-        filteredArr.push(list[i])
-        }
-    }
-    console.log(filteredArr);
-}
-uniqueLanguages(splitLangList);
+// Using [...new Set(languageList)]
+// const languageList = users.reduce((accum, {languages}) => {
+//     return accum + languages + ',';
+// }, [])
+// let splitLangList = languageList.split(",");
+// const uniqueLanguages = [...new Set(splitLangList.slice(0, -1))]
+// console.dir(uniqueLanguages);
+
+/*========= Old way =========*/
+// function uniqueLanguages(list) {
+//     let filteredArr = [];
+//     for (let i = 0; i < list.length - 1; i++) {
+//         if (list.indexOf(list[i]) === i) { //conditionals is split in 2 ways list.indexOf evaluates, then (value) === i
+//         filteredArr.push(list[i])
+//         }
+//     }
+//     console.log(filteredArr);
+// }
+// uniqueLanguages(splitLangList);
 
 
 
