@@ -38,56 +38,49 @@ const users = [
     }
 ];
 
-// TODO: Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
-// const moreLang = users.filter(user => user.languages.length >= 3);
-// console.log(moreLang)
+//2 TODO: Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
+const moreLang = users.filter(user => user.languages.length >= 3);
+//console.log(moreLang)
 
 
-// TODO: Use .map to create an array of strings where each element is a user's email address
-//const justEmail = users.map(user => user.email);
-// console.log(justEmail);
+//3 TODO: Use .map to create an array of strings where each element is a user's email address
+const justEmail = users.map(user => user.email);
+//console.log(justEmail);
 
 
-// TODO: Use .reduce to get the total years of experience from the list of users. Once you get the total of years you can use the result to calculate the average.
-// const totalExp = users.reduce((total, user) => {
-//     return total + user.yearsOfExperience;
-// }, 0);
-//
-// console.log(totalExp)
+//4 TODO: Use .reduce to get the total years of experience from the list of users. Once you get the total of years you can use the result to calculate the average.
+const totalExp = users.reduce((total, user) => {
+    return total + user.yearsOfExperience;
+}, 0);
+const avgYearsOfExp = totalExp/users.length
+//console.log(totalExp)
+//console.log(avgYearsOfExp)
 
 
-// TODO: Use .reduce to get the longest email from the list of users.
-// const justEmail = users.map(user => user.email.split(""))
-// console.log(justEmail)
-
-// const longEmail = users.reduce((accum, curr) => {
-//     if (curr.length > accum.length) {
-//         return curr;
-//     } else {
-//         return accum;
-//     }
-//
-// }, '');
-// console.log(longEmail);
-
-// const longEmail = users.reduce((accum, {email}) => {
-//     if (email.length > accum.length) {
-//         return email;
-//     }else {
-//         return accum;
-//     }
-// }, '');
-//
-// console.log(longEmail);
+//5 TODO: Use .reduce to get the longest email from the list of users.
+const longEmail = users.reduce((accum, {email}) => {
+    if (email.length > accum.length) {
+        return email;
+    }else {
+        return accum;
+    }
+}, '');
+//console.log(longEmail);
 
 
-// TODO: Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
+//6 TODO: Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
+// const longStrNames = users.reduce((accum, {name}) => {
+//     return accum + name + ', '
+// }, '')
+// console.log(`Your instructors are: ${longStrNames}`);
 
-const longUserName = users.reduce((accum, {name}) => {
-    return `Your instructors are: ${accum + name + ', '}`
-}, '')
+//*===== AFTER COMPARISON TO SOLUTION: HOW? Dissect this =======*/
+const instructors = users.reduce((message, { name }) =>
+`${message} ${name},`, 'Your instructors are:').slice(0, -1).concat(".");
+//console.log(instructors);
 
-//console.log(longUserName);
+
+
 
 // TODO: BONUS! Use .reduce to get the unique list of languages from the list of users
 
@@ -96,14 +89,14 @@ const languageList = users.reduce((accum, {languages}) => {
     return accum + languages + ',';
 }, [])
 
-console.log(languageList);
+//console.log(languageList);
 
 let splitLangList = languageList.split(",");
 const uniqueLanguages = splitLangList.filter((language, index, array) =>
     array.indexOf(language) === index).slice(0, -1); //sliced thru the whole thing --> .filter(....).slice( , )
 
-console.dir(splitLangList);
-console.dir(uniqueLanguages);
+//console.dir(splitLangList);
+//console.dir(uniqueLanguages);
 
 // Using [...new Set(languageList)]
 // const languageList = users.reduce((accum, {languages}) => {
