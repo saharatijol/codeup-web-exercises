@@ -77,7 +77,7 @@ const longEmail = users.reduce((accum, {email}) => {
 //*===== AFTER COMPARISON TO SOLUTION: HOW? Dissect this =======*/
 const instructors = users.reduce((message, { name }) =>
 `${message} ${name},`, 'Your instructors are:').slice(0, -1).concat(".");
-//console.log(instructors);
+console.log(instructors);
 
 
 

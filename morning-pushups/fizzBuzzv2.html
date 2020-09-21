@@ -12,37 +12,81 @@
 <div id="output"></div>
 
 <script src="../js/jquery-2.2.4.js"></script>
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--    $('#generate').click(function() {-->
+<!--        var num = $('#input').val()-->
+<!--        fizzBuzz(num)-->
+<!--        $('#output').html(fizzBuzz(num).split("<br> ") + '<br>')-->
+<!--    })-->
+
+<!--    function fizzBuzz(num) {-->
+<!--        var fizzBuzzArr = [];-->
+<!--        var count = 1;-->
+
+<!--        while (count <= num) {-->
+<!--            if (count % 3 == 0 && count % 5 == 0) {-->
+<!--                //Note: it is important on how you order your if-else statements-->
+<!--                fizzBuzzArr.push('FizzBuzz');-->
+<!--            } else if (count % 5 == 0) {-->
+<!--                fizzBuzzArr.push('Buzz');-->
+<!--            } else if (count % 3 == 0) {-->
+<!--                fizzBuzzArr.push('Fizz');-->
+<!--            } else {-->
+<!--                fizzBuzzArr.push(count);-->
+<!--            }-->
+<!--            count++;-->
+<!--        }-->
+<!--        console.log(fizzBuzzArr);-->
+<!--        return fizzBuzzArr-->
+<!--    }-->
+<!--    fizzBuzz(50)-->
+<!--    })-->
+<!--</script>-->
+
 <script>
+    // $(document).ready(function() {
+    //     $('#button').click(function(){
+    //         var num = $('#input').val();
+    //         for (var i = 1; i <= num; i++) {
+    //             if (i % 15 === 0) {
+    //                 $('#output').append('fizzBuzz<br>');
+    //             } else if (i % 3 === 0) {
+    //                 $('#output').append('fizz<br>');
+    //             } else if (i % 5 === 0) {
+    //                 $('#output').append('buzz<br>')
+    //             } else {
+    //                 $('#output').append(i + '<br>');
+    //             }
+    //         }
+    //         $('#output').append('');
+    //     })
+    // });
+
     $(document).ready(function() {
-    $('#generate').click(function() {
-        var num = $('#input').val()
-        fizzBuzz(num)
-        $('#output').html(fizzBuzz(num).split("<br> ") + '<br>')
+        $('#button').click(function() {
+            let num = $('#input').val();
+            fizzbuzz(num)
+        })
     })
 
-    function fizzBuzz(num) {
-        var fizzBuzzArr = [];
-        var count = 1;
-
-        while (count <= num) {
-            if (count % 3 == 0 && count % 5 == 0) {
-                //Note: it is important on how you order your if-else statements
-                fizzBuzzArr.push('FizzBuzz');
-            } else if (count % 5 == 0) {
-                fizzBuzzArr.push('Buzz');
-            } else if (count % 3 == 0) {
-                fizzBuzzArr.push('Fizz');
+    const fizzbuzz = (num) => {
+        for (let i = 1; i <= num; i++) {
+            if (i % 15 === 0) {
+                $('#output').append('fizzBuzz<br>');
+            } else if (i % 3 === 0) {
+                $('#output').append('fizz<br>');
+            } else if (i % 5 === 0) {
+                $('#output').append('buzz<br>')
             } else {
-                fizzBuzzArr.push(count);
+                $('#output').append(i + '<br>');
             }
-            count++;
         }
-        console.log(fizzBuzzArr);
-        return fizzBuzzArr
+        $('#output').append('');
     }
-    //fizzBuzz(50)
-    })
-</script>
 
+    //fizzbuzz(50);
+    //fizzbuzz();
+</script>
 </body>
 </html>
